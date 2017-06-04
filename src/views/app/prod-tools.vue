@@ -2,7 +2,7 @@
   <div class="prod-tools">
     <h2>Productivity tools</h2> 
     <div class="tools">
-      <div class="tools__elem" v-for="tool in tools" @click="toogleFav(tool)">
+      <div class="tools__elem" v-for="tool in tools" @click="selectAsFav(tool)">
         <tool :tool="tool" />
       </div>
     </div>      
@@ -10,46 +10,27 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 import Tool from 'views/app/tool'
 
 export default {
-  name: 'app',
+  name: 'prod-tools',
   components: {
     Tool
   },
-  data() {
-    return {
-      tools: [{
-        title: 'JIRA',
-        desc: 'Project management - using card to manage team tasks',
-        fav: false,
-      }, {
-        title: 'Wunderlist',
-        desc: 'Personal todolist - can setup reminders and multiple lists with tasks',
-        fav: true,
-      }, {
-        title: 'Github Projects',
-        desc: 'Project management - board inside Github to organize our issues using cards',
-        fav: true,
-      }, {
-        title: 'Basecamp',
-        desc: 'Communication - platform to communicate with team and clients',
-        fav: false,
-      }, {
-        title: 'Slack',
-        desc: 'Team communcation - communicate with your team using fancy emoji. Not like this one :)',
-        fav: false,
-      }],
-    }
+  computed: {
+    ...mapState({
+      tools: state => state.tools.tools,
+      favTool: state => state.tools.favourite
+    })
   },
   methods: {
-    toogleFav(tool) {
-      for(let i = 0; i < this.tools.length; i++) {
-        if(this.tools[i].title === tool.title) {
-          this.tools[i].fav = !this.tools[i].fav
-        }
-      }
-    }
+    selectAsFav(tool) {
+      this.setToolsAction([this.tools, tool])  
+    },
+    ...mapActions('tools', [
+      'setToolsAction'
+    ]),
   }
 }
 </script>
@@ -75,9 +56,9 @@ export default {
   border-radius: 5px;
 
   &__elem {
-    width: calc(50% - 60px);
+    width: calc(50% - 20px);
     display: inline-block;
-    margin: 30px;
+    margin: 10px;
 
     box-sizing: border-box;
   }

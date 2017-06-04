@@ -2,12 +2,13 @@
   <div class="tool" :class="{isFav: tool.fav}">
     <h3>{{tool.title}}</h3>
     <p>{{tool.desc}}</p>
+    <slot name="comment" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'tool',
   props: {
     tool: {
       required: true,

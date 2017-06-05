@@ -4,5 +4,10 @@ export default {
   },
   setToolsMutation (state, tools) {
     state.tools = tools
+  },
+  setToolFavorite (state, { tool, favorite }) {
+    // Fetch that specific tool
+    const toolInState = state.tools.filter(t => t.title === tool);
+    toolInState.favorite = favorite;
   }
 }

@@ -1,17 +1,13 @@
 export default {
-  setToolsAction (context, tools) {
-    let allTools = tools[0]
-    const fav = tools[1]
-
-    for(let i = 0; i < allTools.length; i++) {      
-      if(allTools[i].title === fav.title) {
-        allTools[i].fav = true
-      } else {
-        allTools[i].fav = false
-      }
-    }
-
+  setToolsAction(context, { allTools, fav} ) {
+    allTools.forEach(tool => {
+      context.commit('setToolFavorite', {
+        tool,
+        favorite: tool.title === fav.title
+      })
+    });
+ 
     context.commit('setToolsMutation', allTools)
-    context.commit('setFavouriteMutation', fav)    
+    context.commit('setFavouriteMutation', fav) // I think this one isn't needed
   }
 }

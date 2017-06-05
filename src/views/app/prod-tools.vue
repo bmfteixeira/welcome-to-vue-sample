@@ -25,8 +25,8 @@ export default {
     })
   },
   methods: {
-    selectAsFav(tool) {
-      this.setToolsAction([this.tools, tool])  
+    selectAsFav(fav) {
+      this.setToolsAction({ allTools: this.tools, fav })  
     },
     ...mapActions('tools', [
       'setToolsAction'

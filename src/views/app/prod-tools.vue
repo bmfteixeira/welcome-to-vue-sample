@@ -1,11 +1,13 @@
 <template>
-  <div class="prod-tools">
-    <h2>Productivity tools</h2> 
-    <div class="tools">
-      <div class="tools__elem" v-for="tool in tools" @click="toogleFav(tool)">
-        <tool :tool="tool" />
-      </div>
-    </div>      
+  <div class="container">
+    <div class="prod-tools">
+      <h2>Productivity tools</h2> 
+      <div class="tools">
+        <div class="tools__elem" v-for="tool in tools" @click="toogleFav(tool)">
+          <tool :tool="tool" />
+        </div>
+      </div>      
+    </div>
   </div>
 </template>
 
@@ -61,7 +63,7 @@ export default {
 
   margin-top: 40px;
   text-align: left;
-  padding: 0 15px;
+  padding: 0 15px 40px;
 }
 
 .tools {
@@ -77,9 +79,17 @@ export default {
   &__elem {
     width: calc(50% - 60px);
     display: inline-block;
-    margin: 30px;
+    margin: 15px 30px;
+
+    vertical-align: top;
 
     box-sizing: border-box;
   }
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 </style>

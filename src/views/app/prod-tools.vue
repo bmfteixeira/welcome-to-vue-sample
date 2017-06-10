@@ -1,11 +1,13 @@
 <template>
-  <div class="prod-tools">
-    <h2>Productivity tools</h2> 
-    <div class="tools">
-      <div class="tools__elem" v-for="tool in tools" @click="selectAsFav(tool)">
-        <tool :tool="tool" />
-      </div>
-    </div>      
+  <div class="container">
+    <div class="prod-tools">
+      <h2>Productivity tools</h2> 
+      <div class="tools">
+        <div class="tools__elem" v-for="tool in tools" @click="selectAsFav(tool)">
+          <tool :tool="tool" />
+        </div>
+      </div>      
+    </div>
   </div>
 </template>
 
@@ -25,8 +27,8 @@ export default {
     })
   },
   methods: {
-    selectAsFav(fav) {
-      this.setToolsAction({ allTools: this.tools, fav })  
+    selectAsFav(tool) {
+      this.setToolsAction({ tools: this.tools, fav: tool })
     },
     ...mapActions('tools', [
       'setToolsAction'
@@ -59,8 +61,15 @@ export default {
     width: calc(50% - 20px);
     display: inline-block;
     margin: 10px;
+    vertical-align: top;
 
     box-sizing: border-box;
   }
+}
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 </style>

@@ -7,7 +7,7 @@ export default {
   },
   setToolFavorite (state, { tool, favorite }) {
     // Fetch that specific tool
-    const toolInState = state.tools.filter(t => t.title === tool);
-    toolInState.favorite = favorite;
+    const toolInState = state.tools.filter(t => t.title === tool.title)[0];
+    toolInState.fav = favorite;
   }
 }

@@ -1,16 +1,18 @@
 <template>
-  <div class="profile">
-    <h2>Profile</h2> 
-    <div class="profile__tool" v-if="fav">
-      <tool :tool="fav">
-        <div slot="comment" class="profile__tool__comment">
-          {{fav.title}} is my long time favourite Productivity tool. It's simply amazing!!!
-        </div>
-      </tool>
+  <div class="container">
+    <div class="profile">
+      <h2>Profile</h2> 
+      <div class="profile__tool" v-if="fav">
+        <tool :tool="fav">
+          <div slot="comment" class="profile__tool__comment">
+            {{fav.title}} is my long time favourite Productivity tool. It's simply amazing!!!
+          </div>
+        </tool>
+      </div>
+      <div v-else class="warning">
+        <h3>No favourite tool was selected! Check the tools <router-link to="/">here</router-link></h3>
+      </div>    
     </div>
-    <div v-else class="warning">
-      <h3>No favourite tool was selected! Check the tools <router-link to="/">here</router-link></h3>
-    </div>    
   </div>
 </template>
 
@@ -67,4 +69,11 @@ export default {
     }
   }
 }
+
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
 </style>

@@ -26,11 +26,11 @@ export default {
       }, {
         title: 'Wunderlist',
         desc: 'Personal todolist - can setup reminders and multiple lists with tasks',
-        fav: true,
+        fav: false,
       }, {
         title: 'Github Projects',
         desc: 'Project management - board inside Github to organize our issues using cards',
-        fav: true,
+        fav: false,
       }, {
         title: 'Basecamp',
         desc: 'Communication - platform to communicate with team and clients',
